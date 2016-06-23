@@ -1,0 +1,277 @@
+﻿@model termProjectMvc.Models.test
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Dashboard : Binary Admin</title>
+    <!-- BOOTSTRAP STYLES-->
+    <link href="../../assets/css/bootstrap.css" rel="stylesheet" />
+    <!-- FONTAWESOME STYLES-->
+    <link href="../../assets/css/font-awesome.css" rel="stylesheet" />
+    <!-- MORRIS CHART STYLES-->
+    <!-- CUSTOM STYLES-->
+    <link href="../../assets/css/custom.css" rel="stylesheet" />
+    <!-- GOOGLE FONTS-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <!-- TABLE STYLES-->
+    <link href="../../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</head>
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Binary admin</a>
+            </div>
+            <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;">Last access : 30 May 2016 &nbsp;<a href="login.html" class="btn btn-danger square-btn-adjust">Logout</a></div>
+        </nav>
+        <!-- /. NAV TOP  -->
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                    <li class="text-center">
+                        <img src="../../assets/img/find_user.png" class="user-image img-responsive" />
+                    </li>
+
+
+                    <li>
+                        @Html.ActionLink("Dashboard", "adminView", "Admin", new { @class = "active-menu fa fa-dashboard fa-3x" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Post A Test", "postTest", "Admin", new { @class = "active-menu fa fa-desktop fa-3x" })
+                    </li>
+                    <li>
+                        <a href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Statistics</a>
+                    </li>
+                    <li>
+                        <a href="table.html"><i class="fa fa-table fa-3x"></i> Connections</a>
+                    </li>
+                    <li>
+                        <a href="form.html"><i class="fa fa-edit fa-3x"></i> Account Settings </a>
+                    </li>
+
+        </nav>
+        <!-- /. NAV SIDE  -->
+        <div id="page-wrapper">
+            <div id="page-inner">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Dear Sir</h2>
+                        <h5>You can post your test here. </h5>
+
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            <label>Select Technology</label>
+                            <select class="alert-warning" id="myList">
+                                <option value="1">C++</option>
+                                <option value="2">C</option>
+                                <option value="3">C#</option>
+                                <option value="4">ObjectiveC</option>
+                                <option value="5">Python</option>
+                                <option value="6">Java</option>
+                                <option value="7">JavaScript</option>
+                            </select>
+                        </p>
+                        <!-- Advanced Tables -->
+                        <div >
+
+                            <script>
+                                
+                                angular.module("myapp", []).controller("AddQuestionController", function ($scope, $rootScope) {
+
+                                    $("#newquestion1").focus();
+                                    $scope.question = {
+                                        "Statement": "",
+                                        "Choices": [],
+                                        "Answer":""
+                                    };
+
+
+                                    $rootScope.currentQuestions = [];
+                                    $scope.AddTheQuestion = function () {
+                                        debugger;
+                                        alert("adding");
+                                        $scope.question.Statement = $scope.question.Statement;
+                                        
+                                        $rootScope.currentQuestions.push($scope.question);
+                                        $("#newquestion1").val("");
+                                        $("#newquestion1").focus();
+                                        $scope.newChoiceText = "";
+
+                                        for(i= 0 ; i< $scope.question.Choices.length ; i++)
+                                        {
+                                            
+                                            alert($scope.question.Choices[i]);
+                                        }
+
+                                        var data = {
+                                            "testID": 1,
+                                            "statement": $scope.question.Statement,
+                                            "answer": $scope.question.Answer,
+                                            "option1": $scope.question.Choices[0],
+                                            "option2": $scope.question.Choices[1],
+                                            "option3": $scope.question.Choices[2],
+                                            "option4": $scope.question.Choices[3]
+                                        }
+
+                                        $.ajax({
+                                            type: "POST",
+                                            url: '/api/Activity/AddQuestion',
+                                            data: data,
+                                            success: function (resp) {
+                                                alert("success");
+                                            },
+                                            error: function () {
+                                                alert("error");
+                                            }
+                                        });
+                                    };
+                                    $scope.newChoiceText = "";
+
+                                    $scope.addChoice = function () {
+                                        $scope.question.Choices.push($scope.newChoiceText);
+                                        $scope.newChoiceText = "";
+                                        $scope.newChoiceText.focus();
+                                    };
+                                });
+
+                                angular.module("myapp").controller("showQuestionController", function ($scope) {
+
+
+                                });
+
+                            </script>
+                            <div ng-app="myapp">
+
+
+
+                                <div class="row container">
+
+                                    <div class="col-lg-8" ng-controller="AddQuestionController">
+
+                                        <div class="col-lg-8">
+
+                                            <h2 class="row" style="font-family:'Berlin Sans FB'">Add Question</h2>
+
+                                                <input style="font-family:Calibri" class="row col-lg-pull-6 form-control" id="newquestion1" placeholder="Add question statement" ng-model="question.Statement" />
+
+                                                <form style="margin-left:20px;margin-top:20px">
+                                                    <h4 style="font-family:'Berlin Sans FB'" class="row">Choices</h4>
+                                                    <div class="row col-lg-12">
+                                                        <input style="font-family:'Calibri'; margin:1px" ng-model="newChoiceText" class="form-control" placeholder="Add choice here" />
+
+                                                        <button class="btn btn-primary " ng-disabled="newChoiceText === ''" ng-click="addChoice()">Add Choice</button>
+                                                    </div>
+                                                </form>
+                                            <br />
+                                            <br />
+                                            <input style="font-family:Calibri" class="row col-lg-pull-6 form-control" id="newquestion1" placeholder="Answer Option" ng-model="question.Answer" />
+
+                                            <form >
+                                                <input type="submit" ng-disabled="question.Statement === ''" style="margin-top:20px" class="btn btn-default col-lg-pull-6" ng-click="AddTheQuestion()"></input>
+                                            </form>
+                                                @*<button ng-disabled="question.Statement === ''" style="margin-top:20px;margin-left:5px" class="btn btn-success col-lg-push-2">Submit Test</button>*@
+                                            
+</div>
+                                        <div class="col-lg-4">
+                                            <h3 style="font-family:'Berlin Sans FB'">Preview Question</h3>
+                                            <p style="font-family:'Berlin Sans FB'" ng-bind="question.Statement"></p>
+                                            <ul style="list-style:none" ng-repeat="c in question.Choices">
+                                                <li>{{$index + 1}}. &nbsp;&nbsp;{{c}}</li>
+
+                                            </ul>
+                                            <ul><li style="font-family:'Berlin Sans FB'" ng-bind="newChoiceText" ng-hide="newChoiceText === ''"></li></ul>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <div class="row container">
+                                    <div class="col-lg-7" ng-controller="showQuestionController">
+
+                                        <div class="col-lg-6"></div>
+                                        <div class="col-lg-7">
+
+                                            <h2 style="font-family:'Berlin Sans FB'">Current Questions</h2>
+
+                                            <div ng-repeat="q in currentQuestions" style="margin:20px">
+                                                <p style="font-family: 'Calibri'">{{$index + 1}}. &nbsp;&nbsp;  {{q.Statement}}</p>
+                                                <ul ng-repeat="c in q.Choices">
+
+                                                    <li style="font-family: 'Calibri' ; list-style:none">{{$index + 1}}.&nbsp; &nbsp; {{c}}</li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Advanced Tables -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!--    Bordered Table  -->
+                        <!--  End  Bordered Table  -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <!--    Hover Rows  -->
+                        <!-- End  Hover Rows  -->
+                    </div>
+                </div>
+                <!-- /. ROW  -->
+            </div>
+
+        </div>
+        <!-- /. PAGE INNER  -->
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../../assets/js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../../assets/js/jquery.metisMenu.js"></script>
+    <!-- DATA TABLE SCRIPTS -->
+    <script src="../../assets/js/dataTables/jquery.dataTables.js"></script>
+    <script src="../../assets/js/dataTables/dataTables.bootstrap.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+   
+    <!-- CUSTOM SCRIPTS -->
+    <script src="assets/js/custom.js"></script>
+
+</body>
+</html>

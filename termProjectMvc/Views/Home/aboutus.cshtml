@@ -1,0 +1,80 @@
+﻿@{ Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
+}
+
+    <div class="container" style="background-color:lightgray">
+
+        <div class="row">
+
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Categories</li>
+                        <li class="list-group-item ">@Html.ActionLink("Cell Phones","cellphones","Categories")</li>
+                        <li class="list-group-item ">@Html.ActionLink("Laptops","laptops","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Tablets","tablets","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Cameras","cameras","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Computer Accessories","computeracc","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("All","all","Categories")</li>
+
+                    </ul>
+                        <ul class="list-group">
+                        <li class="list-group-item active">Filters by brands</li>
+                        <li class="list-group-item">@Html.ActionLink("Apple","apple","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("HTC","htc","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Samsung","samsung","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Android","android","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nokia","nokia","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Dell","dell","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Canon","canon","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nikon","nikon","Brands")</li>
+                        
+
+                    </ul>
+                   
+                </div>
+
+            <div class="col-md-9 col-sm-6 col-xm-9" >
+                <div style="background-color:lightseagreen;;height:70px">
+                <h2 style="font-family:'Arial Unicode MS'; color:white;padding-left:20px;padding-top:10px">About US</h2>
+               </div>
+                  <div style="background-color:white;height:500px">
+                <h2 style="margin-left:20px;padding-top:30px">
+                      E-Tech
+                    </h2>
+                    <p style="margin-left:20px"> E-tech is a productive website that provides you with the details of all the electronics. And keeps you updated with the new arrivals of your interest so we are differnt from our competitors.If you are short on time you should try our website to get the complete details, Time is a precious commodity, and we’re here to help you make the most of yours…” ;) </p>
+                    <h2 style="margin-left:20px" >What are the products? </h2>
+                    <p style="margin-left:20px"> Our main concerned produts are: Mobile Phones, Laptops, Tablets, Cameras, Computer accessories. </p>
+                    <h3 style="margin-left:20px">Our Team</h3>
+                    <p style="margin-left:20px">We are working with the latest brands such as Apple, Dell, Htc, Nokia, Samsung, Nikon, Canon, and Android. We capture the details of their products and publish them to you. </p>
+                
+            </div>  
+            </div> 
+            
+        </div>
+
+
+
+       
+          
+                <div class="row">
+                   
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                          <li class="list-group-item active">Filters by Pricing</li>
+                          <li class="list-group-item">@Html.ActionLink("0-10k","one","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("10k-20k","two","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("20k-35k","three","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("35k-45k","four","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("45k-60k","five","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("60k+","six","Price")</li>
+                        </ul>
+                    </div>
+                </div>
+
+</div>
+
+
+   

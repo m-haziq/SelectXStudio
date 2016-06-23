@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h2 style="margin-left:550px">Search Results!</h2>
+<div class="container" style="margin-left:400px">
+ <div class="col-md-6 col-sm-6 col-xs-6">
+        <div class="thumbnail product-item" id="1234">
+            
+       </div>
+ </div>
+    </div>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $('document').ready(function () {
+      
+        $.getJSON("CheckproductRange?Range=@ViewBag.Range", function (data) {
+
+            if (data) {
+                $.each(data, function (index) {
+                    var img = $("<img style=height: 200px; width: 450px/>").attr('src', data[index].imageName); 
+                    $("#1234").append(img);
+                    $('#1234').append("<h4 >Price : Rs " + data[index].price + "</h4><h5>Name : " + data[index].title + "</h5>" + "<img src=" + "'data[index].imageName'" + "/> <br/>");
+                   
+
+                });
+
+            }
+            else {
+                $('#1234').append("<h4 >No Results found !!</h4>");
+            }
+        });
+
+    });
+
+</script>

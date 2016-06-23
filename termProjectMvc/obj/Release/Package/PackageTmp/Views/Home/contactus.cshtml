@@ -1,0 +1,77 @@
+﻿@{ Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
+}
+
+    <div class="container" style="background-color:lightgray">
+
+        <div class="row">
+
+                <div class="col-md-3">
+                   <ul class="list-group">
+                        <li class="list-group-item active">Categories</li>
+                        <li class="list-group-item ">@Html.ActionLink("Cell Phones","cellphones","Categories")</li>
+                        <li class="list-group-item ">@Html.ActionLink("Laptops","laptops","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Tablets","tablets","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Cameras","cameras","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Computer Accessories","computeracc","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("All","all","Categories")</li>
+
+                    </ul>
+                </div>
+            <div class="col-md-9 col-sm-6 col-xm-9" style="background-color:lightseagreen">
+                <h2 style="font-family:'Arial Unicode MS'; color:white">Contact Info </h2>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xm-12">
+                 
+                <br />
+                <br />
+                <label class=" control-label" for="address" >Email Address: contact@etech.com</label>
+                <br/>
+                <br/>
+                <label class="control-label" for="fax" >Fax: 111-222-345</label>
+                <br/>
+                <br/>
+                <label class=" control-label" for="phone" >Phone: 111-2233-333</label>
+            </div>
+        </div>
+
+
+
+       
+          
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                        <li class="list-group-item active">Filters by brands</li>
+                        <li class="list-group-item">@Html.ActionLink("Apple","apple","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("HTC","htc","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Samsung","samsung","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Android","android","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nokia","nokia","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Dell","dell","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Canon","canon","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nikon","nikon","Brands")</li>
+                        
+
+                    </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="list-group">
+                          <li class="list-group-item active">Filters by Pricing</li>
+                          <li class="list-group-item">@Html.ActionLink("0-10k","one","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("10k-20k","two","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("20k-35k","three","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("35k-45k","four","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("45k-60k","five","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("60k+","six","Price")</li>
+                        </ul>
+                    </div>
+                </div>
+
+</div>
+
+
+    

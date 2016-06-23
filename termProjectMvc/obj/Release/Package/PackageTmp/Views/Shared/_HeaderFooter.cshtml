@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title></title>
+     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    
+    <link href="Style.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <style>
+  .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 70%;
+      margin: auto;
+  }
+  </style>
+
+
+</head>
+<body>
+    
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="font-style:oblique;color:white;background-color:lightseagreen">E-Tech</a>
+            </div>
+            <div>
+                <div class="pull-right" style="margin-top:10px">
+                   
+                    <a style="color:white; font:bold"><span class="glyphicon glyphicon-user" style="background-color:purple ; color:white "></span>@Html.ActionLink("Signup","signup","Home")</a>
+                    <a style="color:white; font:bold"><span class="glyphicon glyphicon-log-in" style="background-color:purple; color:white "></span>@Html.ActionLink("Login","login","Home")</a>
+                </div>
+
+            </div>
+        </nav>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="navbar-header">
+                
+                <div class="navbar-brand"  style="font-style:oblique;color:white;background-color:lightseagreen">Admin Panel</div>
+                   
+            </div>
+            <div>
+                <div class="pull-right">
+                    <ul class="nav nav-pills" style="margin-left:60px">
+                        <li> @Html.ActionLink("Main","adminView","Admin")</li>
+                        <li> @Html.ActionLink("Add Products","addProduct","Admin")</li>
+                        <li> @Html.ActionLink("View Products","all_products","Admin")</li>
+                    </ul>
+      
+                </div>
+
+            </div>
+        </nav>
+    <div>
+        @RenderBody();
+    </div>
+       <div class="col-md-12 copyright" style="margin-top:30px">
+          <div class="row">
+      <div class="row" style=" background-color:lightseagreen ">
+            <div class="col-md-8 col-sm-8 copyright-left" >
+              <p style="margin-left:350px;color:white">Copyright &copy; E-Tech. All RIGHTS RESERVED.</p>
+            </div>
+            <div class="col-md-4 col-sm-4 copyright-right" >
+      <div class="row" style="background-color:lightseagreen">
+              <ul class="list-inline text-center">
+                 <li><a href="https://www.facebook.com/"><img src="~/images/fb.jpg" style="width:30px;height:30px"/></a></li>
+                <li><a href="https://plus.google.com/"><img src="~/images/google.jpg" style="width:30px;height:30px"/></a></li>
+                <li><a href="https://twitter.com/?lang=en"><img src="~/images/twitter.jpg" style="width:30px;height:30px"/></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+              </div>
+           </div>

@@ -1,0 +1,123 @@
+﻿@model List<termProjectMvc.Models.product>
+@{ Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
+}
+    <div class="container" style="background-color:lightgray">
+
+        <div class="row">
+
+                <div class="col-md-3">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Categories</li>
+                        <li class="list-group-item ">@Html.ActionLink("Cell Phones","cellphones","Categories")</li>
+                        <li class="list-group-item ">@Html.ActionLink("Laptops","laptops","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Tablets","tablets","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Cameras","cameras","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Computer Accessories","computeracc","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("All","all","Categories")</li>
+
+                    </ul>
+                     <ul class="list-group">
+                        <li class="list-group-item active">Filters by brands</li>
+                        <li class="list-group-item">@Html.ActionLink("Apple","apple","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("HTC","htc","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Samsung","samsung","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Android","android","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nokia","nokia","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Dell","dell","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Canon","canon","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nikon","nikon","Brands")</li>
+                        
+
+                    </ul>
+                    <ul class="list-group">
+                          <li class="list-group-item active">Filters by Pricing</li>
+                          <li class="list-group-item">@Html.ActionLink("0-10k","one","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("10k-20k","two","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("20k-35k","three","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("35k-45k","four","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("45k-60k","five","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("60k+","six","Price")</li>
+                        </ul>
+                </div>
+
+            
+            <div class=" col-md-9">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                        <li data-target="#myCarousel" data-slide-to="4"></li>
+
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="~/images/DSC_4243.jpg" alt="Mac" style="width:900px;height:345px"/>
+                        </div>
+
+                        <div class="item ">
+                            <img src="~/images/nikonf100.jpg" alt="Nikon" style="width:900px;height:345px"/>
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/galaxy.jpg" alt="Galaxy" style="width:900px;height:345px"/>
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/lumia.jpg" alt="Lumia" style="width:900px;height:345px"/>
+                        </div>
+
+                        <div class="item">
+                            <img src="~/images/hp.jpg" alt="HP" style="width:900px;height:345px"/>
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+
+
+                @foreach(var x in Model)
+                {
+                    <div style="margin-top:20px"></div>
+                  <div class="col-md-4 col-sm-4 col-xs-6">
+                            <div class="thumbnail product-item">
+                                <a href="product_detail.html">
+                                    <img  src="@x.imageName" style="height: 200px; width: 450px" /></a>
+                                <div class="caption">
+                                   
+                                    <h5>@x.title</h5>
+                                     <a href="#">
+                                        <h6>@x.price</h6>
+                                        </a>
+                                    <div>
+                                        <ul class="nav nav-pills">
+                                             <li class="active"><a href="/Home/details/@x.Id">See Details</a> </li>
+                                        </ul>
+                                         <!-- <a href="~/Views/Home/details"><button class="btn btn-warning">See Details</button></a> -->
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                }
+      
+                 
+
+            </div>
+       </div>
+        </div>
+       

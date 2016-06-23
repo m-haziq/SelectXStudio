@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="contactno" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="degree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="institute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="campus" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="statement" Type="varchar(max)" />
+          <Property Name="option1" Type="varchar" MaxLength="50" />
+          <Property Name="option2" Type="varchar" MaxLength="50" />
+          <Property Name="option3" Type="varchar" MaxLength="50" />
+          <Property Name="option4" Type="varchar" MaxLength="50" />
+          <Property Name="answer" Type="int" />
+          <Property Name="testId" Type="int" />
+        </EntityType>
+        <EntityType Name="score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="score" Type="int" />
+          <Property Name="testId" Type="int" />
+          <Property Name="userId" Type="int" />
+        </EntityType>
+        <EntityType Name="technology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="technologyId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="user1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="degreeId" Type="int" />
+          <Property Name="contactno" Type="varchar" MaxLength="50" />
+          <Property Name="instituteId" Type="int" />
+          <Property Name="technology1" Type="int" />
+          <Property Name="technology2" Type="int" />
+          <Property Name="technology3" Type="int" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_question_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="testId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_score_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="testId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_score_user">
+          <End Role="user1" Type="Self.user1" Multiplicity="0..1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_technology">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="technologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_degree">
+          <End Role="degree" Type="Self.degree" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="degree">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="degreeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_institute">
+          <End Role="institute" Type="Self.institute" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="institute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="instituteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology1">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology2">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology3">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="degree" EntityType="Self.degree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="institute" EntityType="Self.institute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="question" EntityType="Self.question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="score" EntityType="Self.score" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="technology" EntityType="Self.technology" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user1" EntityType="Self.user1" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_question_test" Association="Self.FK_question_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="question" EntitySet="question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_score_test" Association="Self.FK_score_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_score_user" Association="Self.FK_score_user">
+            <End Role="user1" EntitySet="user1" />
+            <End Role="score" EntitySet="score" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_company" Association="Self.FK_test_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_technology" Association="Self.FK_test_technology">
+            <End Role="technology" EntitySet="technology" />
+            <End Role="test" EntitySet="test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_degree" Association="Self.FK_user1_degree">
+            <End Role="degree" EntitySet="degree" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_institute" Association="Self.FK_user1_institute">
+            <End Role="institute" EntitySet="institute" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology1" Association="Self.FK_user1_technology1">
+            <End Role="technology" EntitySet="technology" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology2" Association="Self.FK_user1_technology2">
+            <End Role="technology" EntitySet="technology" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology3" Association="Self.FK_user1_technology3">
+            <End Role="technology" EntitySet="technology" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tests" Relationship="Self.FK_test_company" FromRole="company" ToRole="test" />
+        </EntityType>
+        <EntityType Name="degree">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_user1_degree" FromRole="degree" ToRole="user1" />
+        </EntityType>
+        <EntityType Name="institute">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="campus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_user1_institute" FromRole="institute" ToRole="user1" />
+        </EntityType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="statement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="option1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="option2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="option3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="option4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="answer" Type="Int32" />
+          <Property Name="testId" Type="Int32" />
+          <NavigationProperty Name="test" Relationship="Self.FK_question_test" FromRole="question" ToRole="test" />
+        </EntityType>
+        <EntityType Name="score">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="score1" Type="Int32" />
+          <Property Name="testId" Type="Int32" />
+          <Property Name="userId" Type="Int32" />
+          <NavigationProperty Name="test" Relationship="Self.FK_score_test" FromRole="score" ToRole="test" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_score_user" FromRole="score" ToRole="user1" />
+        </EntityType>
+        <EntityType Name="technology">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tests" Relationship="Self.FK_test_technology" FromRole="technology" ToRole="test" />
+          <NavigationProperty Name="user1" Relationship="Self.FK_user1_technology1" FromRole="technology" ToRole="user1" />
+          <NavigationProperty Name="user11" Relationship="Self.FK_user1_technology2" FromRole="technology" ToRole="user1" />
+          <NavigationProperty Name="user12" Relationship="Self.FK_user1_technology3" FromRole="technology" ToRole="user1" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="technologyId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <NavigationProperty Name="company" Relationship="Self.FK_test_company" FromRole="test" ToRole="company" />
+          <NavigationProperty Name="questions" Relationship="Self.FK_question_test" FromRole="test" ToRole="question" />
+          <NavigationProperty Name="scores" Relationship="Self.FK_score_test" FromRole="test" ToRole="score" />
+          <NavigationProperty Name="technology" Relationship="Self.FK_test_technology" FromRole="test" ToRole="technology" />
+        </EntityType>
+        <EntityType Name="user1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="degreeId" Type="Int32" />
+          <Property Name="contactno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="instituteId" Type="Int32" />
+          <Property Name="technology1" Type="Int32" />
+          <Property Name="technology2" Type="Int32" />
+          <Property Name="technology3" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="degree" Relationship="Self.FK_user1_degree" FromRole="user1" ToRole="degree" />
+          <NavigationProperty Name="institute" Relationship="Self.FK_user1_institute" FromRole="user1" ToRole="institute" />
+          <NavigationProperty Name="scores" Relationship="Self.FK_score_user" FromRole="user1" ToRole="score" />
+          <NavigationProperty Name="technology" Relationship="Self.FK_user1_technology1" FromRole="user1" ToRole="technology" />
+          <NavigationProperty Name="technology4" Relationship="Self.FK_user1_technology2" FromRole="user1" ToRole="technology" />
+          <NavigationProperty Name="technology5" Relationship="Self.FK_user1_technology3" FromRole="user1" ToRole="technology" />
+        </EntityType>
+        <Association Name="FK_test_company">
+          <End Role="company" Type="Self.company" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_degree">
+          <End Role="degree" Type="Self.degree" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="degree">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="degreeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_institute">
+          <End Role="institute" Type="Self.institute" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="institute">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="instituteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_question_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="question" Type="Self.question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="testId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_score_test">
+          <End Role="test" Type="Self.test" Multiplicity="0..1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="testId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_score_user">
+          <End Role="user1" Type="Self.user1" Multiplicity="0..1" />
+          <End Role="score" Type="Self.score" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user1">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="score">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_technology">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="test" Type="Self.test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="test">
+              <PropertyRef Name="technologyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology1">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology2">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user1_technology3">
+          <End Role="technology" Type="Self.technology" Multiplicity="0..1" />
+          <End Role="user1" Type="Self.user1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="technology">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="user1">
+              <PropertyRef Name="technology3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="companies" EntityType="Self.company" />
+          <EntitySet Name="degrees" EntityType="Self.degree" />
+          <EntitySet Name="institutes" EntityType="Self.institute" />
+          <EntitySet Name="questions" EntityType="Self.question" />
+          <EntitySet Name="scores" EntityType="Self.score" />
+          <EntitySet Name="technologies" EntityType="Self.technology" />
+          <EntitySet Name="tests" EntityType="Self.test" />
+          <EntitySet Name="user1" EntityType="Self.user1" />
+          <AssociationSet Name="FK_test_company" Association="Self.FK_test_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="test" EntitySet="tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_degree" Association="Self.FK_user1_degree">
+            <End Role="degree" EntitySet="degrees" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_institute" Association="Self.FK_user1_institute">
+            <End Role="institute" EntitySet="institutes" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_question_test" Association="Self.FK_question_test">
+            <End Role="test" EntitySet="tests" />
+            <End Role="question" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_score_test" Association="Self.FK_score_test">
+            <End Role="test" EntitySet="tests" />
+            <End Role="score" EntitySet="scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_score_user" Association="Self.FK_score_user">
+            <End Role="user1" EntitySet="user1" />
+            <End Role="score" EntitySet="scores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_technology" Association="Self.FK_test_technology">
+            <End Role="technology" EntitySet="technologies" />
+            <End Role="test" EntitySet="tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology1" Association="Self.FK_user1_technology1">
+            <End Role="technology" EntitySet="technologies" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology2" Association="Self.FK_user1_technology2">
+            <End Role="technology" EntitySet="technologies" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user1_technology3" Association="Self.FK_user1_technology3">
+            <End Role="technology" EntitySet="technologies" />
+            <End Role="user1" EntitySet="user1" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="Database1Model.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="degrees">
+            <EntityTypeMapping TypeName="Database1Model.degree">
+              <MappingFragment StoreEntitySet="degree">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="institutes">
+            <EntityTypeMapping TypeName="Database1Model.institute">
+              <MappingFragment StoreEntitySet="institute">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="campus" ColumnName="campus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questions">
+            <EntityTypeMapping TypeName="Database1Model.question">
+              <MappingFragment StoreEntitySet="question">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="statement" ColumnName="statement" />
+                <ScalarProperty Name="option1" ColumnName="option1" />
+                <ScalarProperty Name="option2" ColumnName="option2" />
+                <ScalarProperty Name="option3" ColumnName="option3" />
+                <ScalarProperty Name="option4" ColumnName="option4" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="testId" ColumnName="testId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="scores">
+            <EntityTypeMapping TypeName="Database1Model.score">
+              <MappingFragment StoreEntitySet="score">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="score1" ColumnName="score" />
+                <ScalarProperty Name="testId" ColumnName="testId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="technologies">
+            <EntityTypeMapping TypeName="Database1Model.technology">
+              <MappingFragment StoreEntitySet="technology">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tests">
+            <EntityTypeMapping TypeName="Database1Model.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="technologyId" ColumnName="technologyId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user1">
+            <EntityTypeMapping TypeName="Database1Model.user1">
+              <MappingFragment StoreEntitySet="user1">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="degreeId" ColumnName="degreeId" />
+                <ScalarProperty Name="contactno" ColumnName="contactno" />
+                <ScalarProperty Name="instituteId" ColumnName="instituteId" />
+                <ScalarProperty Name="technology1" ColumnName="technology1" />
+                <ScalarProperty Name="technology2" ColumnName="technology2" />
+                <ScalarProperty Name="technology3" ColumnName="technology3" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

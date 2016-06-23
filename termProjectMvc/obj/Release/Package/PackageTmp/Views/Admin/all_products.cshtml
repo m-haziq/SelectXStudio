@@ -1,0 +1,49 @@
+﻿@model List<termProjectMvc.Models.product>
+@{
+    Layout = "~/Views/Shared/_HeaderFooter.cshtml";
+}
+
+   
+<!-- Table -->
+<!-- Content -->
+			<div id="content">
+				
+				<!-- Box -->
+				<div class="box col-md-10 " style="background-color:lightblue ;margin-left:130px">
+					<!-- Box Head -->
+					<div class="box-head">
+						<h2 class="left">Current Products</h2>
+						<div class="pull-right">
+							<label>search products</label>
+							<input type="text" class="field small-field" />
+							<input type="submit" class="button" value="search" />
+						</div>
+					</div>
+					<!-- End Box Head -->	
+                    <br />
+                    <br />
+					<div class="table">
+						<table  style="width:100%; border:0 ;cell-spacing:0; cell-padding:0">
+							<tr>
+								<th>Title</th>
+								<th style="margin-top:10px">Price</th>
+                                <th style="margin-left:10px;margin-top:10px">Image</th>
+								<th width:"110" class="ac">Content Control</th>
+							</tr>
+                            @foreach(var c in Model)
+                            {
+							<tr>
+								<td >@c.title</td>
+								<td style="margin-top:10px">@c.price</td>
+                                <td style="padding-top:10px"><img src="@c.imageName" style="height:80px;width:80px" /></td>
+								<td style="margin-top:10px"><a href="/Admin/delete/@c.Id">delete</a><a href="/Admin/Edit/@c.Id" style="margin-left:30px">Edit</a></td>
+							</tr>
+                            }
+						
+							
+						
+						</table>
+						</div>
+                    </div>
+                </div>
+   

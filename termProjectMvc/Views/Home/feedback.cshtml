@@ -1,0 +1,97 @@
+﻿@{ Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
+}
+
+    <div class="container" style="background-color:lightgray">
+
+        <div class="row">
+
+                <div class="col-md-3 col-sm-3 col-xm-12">
+                    <ul class="list-group">
+                        <li class="list-group-item active">Categories</li>
+                        <li class="list-group-item ">@Html.ActionLink("Cell Phones","cellphones","Categories")</li>
+                        <li class="list-group-item ">@Html.ActionLink("Laptops","laptops","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Tablets","tablets","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Cameras","cameras","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("Computer Accessories","computeracc","Categories")</li>
+                        <li class="list-group-item">@Html.ActionLink("All","all","Categories")</li>
+
+                    </ul>
+                     <ul class="list-group">
+                        <li class="list-group-item active">Filters by brands</li>
+                        <li class="list-group-item">@Html.ActionLink("Apple","apple","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("HTC","htc","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Samsung","samsung","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Android","android","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nokia","nokia","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Dell","dell","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Canon","canon","Brands")</li>
+                        <li class="list-group-item">@Html.ActionLink("Nikon","nikon","Brands")</li>
+                        
+
+                    </ul>
+                   
+                </div>
+            <div class="col-md-9 col-sm-6 col-xm-12" style="background-color:lightseagreen">
+                <h2 style="font-family:'Arial Unicode MS'; color:white">Got Something To say ? </h2>
+            </div>
+            <br />
+            <div class="col-md-6 col-sm-6 col-xm-12" style="margin-top:10px">
+                <p> we look forward to get feedback from our clients. Drop us comments about your experience or any confusion that you faced we would surely try to tackle that and <br/>provide you with proper response.</p>
+                <form class="form-horizontal" role="form">
+									<div class="form-group">
+										<label class="col-md-3 col-sm-3 control-label" for="InputName" >Username: </label>
+                                        <div class="col-md-6 col-sm-3">
+                                            <input type="text" class="form-control" id="InputName" placeholder="Username"/>
+
+                                        </div>
+									</div>
+                                      <div class="form-group">
+										<label for="inputEmail" class="col-sm-3 control-label">Email :</label>
+										<div class="col-sm-6">
+											<input type="email" class="form-control" id="inputEmail" placeholder="Email"/>
+										</div>
+									</div>
+									<div class="form-group" >
+										<label class="col-md-3 col-sm-3 control-label" for="password" >Comments: </label>
+                                        <div class="col-md-6 col-sm-3">
+										<input type="text" class="form-control" id="comments" placeholder="Your comments" />
+                                           
+                                         </div>
+									</div>
+                                    <div class="text-center">
+									    <button type="submit" class="btn btn-success" >Submit</button>
+                                    </div>  
+                                    <br />
+                                  
+								</form>
+            </div>
+        </div>
+
+
+
+       
+          
+                
+                    
+                       
+                
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xm-12">
+                       <ul class="list-group">
+                          <li class="list-group-item active">Filters by Pricing</li>
+                          <li class="list-group-item">@Html.ActionLink("0-10k","one","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("10k-20k","two","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("20k-35k","three","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("35k-45k","four","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("45k-60k","five","Price")</li>
+                          <li class="list-group-item">@Html.ActionLink("60k+","six","Price")</li>
+                        </ul>
+                    </div>
+                </div>
+
+</div>
+
+
+   

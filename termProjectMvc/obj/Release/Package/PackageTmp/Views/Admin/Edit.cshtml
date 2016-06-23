@@ -1,0 +1,104 @@
+﻿@model termProjectMvc.Models.product
+@{
+    Layout = "~/Views/Shared/_HeaderFooter.cshtml";
+}
+
+   
+
+    <div>
+                  
+    <div class="panel panel-smart" >
+							<div class="panel-heading">
+								<h3 class="panel-title text-center" style="font-size:40px">Update Product</h3>
+							</div>
+							<div class="panel-body text-center center-block">
+							<!-- Registration Form Starts -->
+								<form class="form-horizontal" role="form" style="margin-left:100px" action="/Admin/updateconfirm/@Model.Id" method="post">
+								<!-- Personal Information Starts -->
+									
+                                     <div class="form-group">
+										<label for="inputLname" class="col-sm-3 control-label">Product title :</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" name="title" value="@Model.title" >
+										</div>
+									</div>
+                                    <div class="form-group">
+										<label for="inputLname" class="col-sm-3 control-label">Category :</label>
+										<div class="col-sm-3">
+                                            <select class="control-label col-md-6" name="category">
+                                                 <option class="form-control" value="@Model.category.name">@Model.category.name</option>
+								                 <option class="form-control" value="Laptops">Laptops</option>
+                                                 <option class="form-control" value="Tablets">Tablets</option>
+                                                  <option class="form-control" value="Cell Phones">Cell Phones</option>
+                                                <option class="form-control" value="Cameras">Cameras</option>
+                                                <option class="form-control" value="Computer Accessories">Computer Accessories</option>
+							                </select>
+										</div>
+									</div>
+                                    <div class="form-group">
+										<label for="inputFax" class="col-sm-3 control-label">Brand:</label>
+										<div class="col-sm-3">
+                                             <select class="control-label col-md-6" name="br">
+                                                <option class="form-control" value="@Model.brand.name">@Model.brand.name</option>
+								                <option class="form-control" value="Apple">Apple</option>
+                                                <option class="form-control" value="HTC">HTC</option>
+                                                <option class="form-control" value="Android">Android</option>
+                                                <option class="form-control" value="Samsung">Samsung</option>
+                                                <option class="form-control" value="Nokia">Nokia</option>
+                                                 <option class="form-control" value="Canon">Canon</option>
+                                                 <option class="form-control" value="Dell">Dell</option>
+
+
+							                </select>
+
+										</div>
+									</div>
+                                    <div class="form-group">
+										<label for="inputLname" class="col-sm-3 control-label">Price :</label>
+										<div class="col-sm-3">
+											<input type="text" class="form-control" name="price" value="@Model.price" >
+										</div>
+									</div>
+									<div class="form-group">
+										<label for="inputEmail" class="col-sm-3 control-label">Date :</label>
+										<div class="col-sm-3">
+                                            <p class="inline-field">
+									                <select class="field size2">
+										                <option value="">12</option>
+									                </select>
+									                <select class="field size3">
+										                <option value="">March</option>
+									                </select>
+									                <select class="field size3">
+										                <option value="">2015</option>
+									                </select>
+								                </p>
+										</div>
+									</div>
+									
+								
+                                   
+                                    <div class="form-group">
+
+                                            <label for="inputFax" class="col-sm-3 control-label">Specifications :</label>
+                                        <div class="row">
+										<div class="col-sm-3">
+                                            <input type="text" class="form-control" name="specification" value="@Model.specification" >
+
+                                            
+										</div>
+                                            
+                                            </div>
+                                    </div>
+                                     <div style="margin-right:300px">
+									<button type="submit" class="btn btn-success">
+										Update
+									</button>
+                                        </div>
+                                    </form>
+                                    </div>
+                            </div>
+           </div>
+                            
+
+  

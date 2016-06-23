@@ -1,0 +1,175 @@
+﻿@model termProjectMvc.Models.user1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>SelectX</title>
+
+    <!-- core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../css/animate.min.css" rel="stylesheet">
+    <link href="../../css/prettyPhoto.css" rel="stylesheet">
+    <link href="../../css/main.css" rel="stylesheet">
+    <link href="../../css/responsive.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../../images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="stylesheet" href="../../assets/css/form-elements.css">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+
+</head>
+
+<body class="homepage">
+    <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><!--<img src="images/logo.png" alt="logo">--></a>
+            </div>
+
+            <div class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
+                    <!--<li class="dropdown featuredropdown open">
+                        <a class="btn btn-lg btn-info btn-normal btn-noborder" data-toggle="dropdown" role="button" aria-expanded="false">Features <span class="caret"></span></a>-->
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features <i class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="blog-item.html">Interviews</a></li>
+                            <li><a href="pricing.html">Tests</a></li>
+                            <!--<li><a href="404.html">404</a></li>
+                            <li><a href="shortcodes.html">Shortcodes</a></li>-->
+                        </ul>
+                    </li>
+
+                    <li><a href="about-us.html">About Us</a></li>
+                    <!--<li><a href="services.html">Services</a></li>-->
+                    <!--<li><a href="portfolio.html">Portfolio</a></li>-->
+                    <!--<span class="static-auth hrw-home-auth">-->
+                    <li><a href="contact-us.html">Contact</a></li>
+
+                    <!--<li><a href="/login" class="btn btn-line">Login</a></li>
+                    <li><a href="/signup" class="btn btn-line">Sign Up</a></li>-->
+                    <!--</span>-->
+                    <!--<li><a href="blog.html">Blog</a></li>-->
+                </ul>
+            </div>
+        </div><!--/.container-->
+    </nav>
+
+    <!-- Top menu -->
+    <!--<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Bootstrap Registration Form Template</a>
+            </div>-->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!--<div class="collapse navbar-collapse" id="top-navbar-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <span class="li-text">
+                            Put some text or
+                        </span>
+                        <a href="#"><strong>links</strong></a>
+                        <span class="li-text">
+                            here, or some icons:
+                        </span>
+                        <span class="li-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-envelope"></i></a>
+                            <a href="#"><i class="fa fa-skype"></i></a>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>-->
+    <!-- Top content -->
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-7 text">
+                        <h1><strong>SelectXstudio</strong> LogIn Form</h1>
+                        <div class="description">
+                            <p>
+                                You know what to do.
+                                <strong></strong></a>
+                            </p>
+                        </div>
+                        <div class="top-big-link">                           
+                        @Html.ActionLink("Login", "login", "Home", new { @class = "btn btn-link-2" })
+                        @Html.ActionLink("Sign Up", "signup", "Home", new { @class = "btn btn-link-2" })
+                        </div>
+                    </div>
+                    <div class="col-sm-5 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Login now</h3>
+                                <p>Fill in the form below to get instant access:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <div class="form-bottom">
+                            @using (Html.BeginForm("validate", "Home", FormMethod.Post))
+                            {
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.email, new { name = "em", @placeholder = "User Name", @class = "ng-pristine" })
+                                        <span ng-show="form.email.$dirty &amp;&amp; form.email.$error.email" class="help-block" style="display: none;">Email is invalid</span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.TextBoxFor(model => model.password, new { name = "p", @placeholder = "Password", @class = "ng-pristine" })
+                                        <span ng-show="form.password.$dirty &amp;&amp; form.password.$error.required" class="help-block" style="display: none;">Please enter a password</span>
+                                    </div>
+
+                                    <input type="submit" value="Login" ng-disabled="form.$invalid" class="btn btn-primary" >
+                            }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Javascript -->
+        <script src="../../assets/js/jquery-1.11.1.min.js"></script>
+        <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="../../assets/js/jquery.backstretch.min.js"></script>
+        <script src="../../assets/js/retina-1.1.0.min.js"></script>
+        <script src="../../assets/js/scripts.js"></script>
+
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities1">
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="Database1Model.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="degrees">
+      <EntityTypeMapping TypeName="Database1Model.degree">
+        <MappingFragment StoreEntitySet="degree">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="institutes">
+      <EntityTypeMapping TypeName="Database1Model.institute">
+        <MappingFragment StoreEntitySet="institute">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="campus" ColumnName="campus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="questions">
+      <EntityTypeMapping TypeName="Database1Model.question">
+        <MappingFragment StoreEntitySet="question">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="statement" ColumnName="statement" />
+          <ScalarProperty Name="option1" ColumnName="option1" />
+          <ScalarProperty Name="option2" ColumnName="option2" />
+          <ScalarProperty Name="option3" ColumnName="option3" />
+          <ScalarProperty Name="option4" ColumnName="option4" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+          <ScalarProperty Name="testId" ColumnName="testId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="scores">
+      <EntityTypeMapping TypeName="Database1Model.score">
+        <MappingFragment StoreEntitySet="score">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="score1" ColumnName="score" />
+          <ScalarProperty Name="testId" ColumnName="testId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="technologies">
+      <EntityTypeMapping TypeName="Database1Model.technology">
+        <MappingFragment StoreEntitySet="technology">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tests">
+      <EntityTypeMapping TypeName="Database1Model.test">
+        <MappingFragment StoreEntitySet="test">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="technologyId" ColumnName="technologyId" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user1">
+      <EntityTypeMapping TypeName="Database1Model.user1">
+        <MappingFragment StoreEntitySet="user1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="fname" ColumnName="fname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="degreeId" ColumnName="degreeId" />
+          <ScalarProperty Name="contactno" ColumnName="contactno" />
+          <ScalarProperty Name="instituteId" ColumnName="instituteId" />
+          <ScalarProperty Name="technology1" ColumnName="technology1" />
+          <ScalarProperty Name="technology2" ColumnName="technology2" />
+          <ScalarProperty Name="technology3" ColumnName="technology3" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,41 @@
+﻿@model termProjectMvc.Models.product
+@{ Layout = "~/Views/Shared/_MainLayout.cshtml";
+    
+}
+  
+<div class="container" style="background-color:lightblue">
+  <h2  style="text-decoration:underline; text-align:center">Price & Specifications</h2>
+ <div class="col-md-12 col-sm-6 col-xs-6" >
+      <div class="thumbnail product-item" >       
+            <img src="@Model.imageName" style="height: 300px; width: 450px" />
+      </div>
+ </div>           
+  <table class="table table-condensed" style="text-align:center">
+    <thead>
+      <tr>
+        <th >Specifications:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Price</td>
+        <td>@Model.price</td>
+      
+      </tr>
+        <tr>
+        <td>Title</td>
+        <td>@Model.title</td>
+      </tr>
+        @{
+            String [] s = Model.specification.Split(',');     
+       }
+        @for (int i = 0; i < s.Length; i=i+2 )
+        {
+            <tr>
+            <td>@s[i]</td>
+            <td>@s[i+1]</td>
+            </tr>
+        }
+    </tbody>
+  </table>
+</div>
